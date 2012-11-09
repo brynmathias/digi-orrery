@@ -8,7 +8,7 @@ planet$(EXE):
 		$(CPP) $(OPTFLAGS) src/planet.cc -o lib/planet.$(OBJ)
 
 orrery$(EXE):
-		$(CPP) $(OPTFLAGS) -o orrary -L./lib/ src/orrery.cc 
+		$(CPP) $(OPTFLAGS) -o orrery -L./lib/ src/orrery.cc 
 
 clean:
-	$(RM) orrary lib/*.$(OBJ)
+	$(RM) orrery lib/*.$(OBJ)

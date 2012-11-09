@@ -2,12 +2,13 @@
 #include "planet.hh"
 int main (int argc, char const *argv[])
 {
-  // object sel_obj(10.,true);
-  // std::cout << "sel_obj mass = " << sel_obj.mass() << " sel_obj has stable" <<
-  planet_t plan(1000.);
-  
-  
-    // sel_obj.stable_orbit() << std::endl;
-  std::cout << "Hello world, the mass of the planet is "<< plan.mass()  << std::endl;
+  object sun(1000000.,x_y_z_point{0.,0.,0.});
+  object earth(1000.,x_y_z_point{10.,10.,0.});
+  object moon(10.,x_y_z_point{10.1,10.1,0.});
+  std::cout << "Force between earth and sun  = " << 
+     sun.ForceFrom(&earth) << " Force between Earth and moon " <<
+     earth.ForceFrom(&moon) << " Force between moon and sun " << 
+     sun.ForceFrom(&moon) << " difference = " << fabs(moon.ForceFrom(&sun) - 
+       moon.ForceFrom(&earth)) << std::endl;
   return 0;
 }
