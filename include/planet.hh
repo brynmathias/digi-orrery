@@ -45,20 +45,15 @@ double object::DistanceTo(object* o){
 double object::ForceFrom(object* o){
   double r = object::DistanceTo(o);
   double Mm = this->mass_ * o->mass_; // no approximation of orbits around a central point, this might make things far far far too hard.
-
-  return G*Mm/(r*r);
+  if(r*r > 0.) return G*Mm/(r*r);
+  else return 0;
 }
 
 
-
-
-
-
-
-
 object::object(double mass, x_y_z_point initialPos):
-  mass_(mass),
-  initalPos_(initialPos)
+  initalPos_(initialPos),
+  mass_(mass)
+    
   {current_pos_=initialPos;}
 
 

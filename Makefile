@@ -11,4 +11,4 @@ orrery$(EXE):
 		$(CPP) $(OPTFLAGS) -o orrery -L./lib/ src/orrery.cc 
 
 clean:
-	$(RM) orrery lib/*.$(OBJ)
+	$(RM) orrery

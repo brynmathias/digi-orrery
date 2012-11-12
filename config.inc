@@ -3,7 +3,7 @@
 CC          = gcc
 CPP         = g++-4.7
 CLINKER     = $(CPP)
-OPTFLAGS    = -std=c++11  -D__APPLE__ -m64 -I./include -ftree-vectorizer-verbose=4
+OPTFLAGS    = -std=c++11  -D__APPLE__ -m64 -I./include -ftree-vectorizer-verbose=4 -Wall
 LIBS        = -lm
 
 CFLAGS	  = $(OPTFLAGS)

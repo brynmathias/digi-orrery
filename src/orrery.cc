@@ -8,7 +8,7 @@ int main (int argc, char const *argv[])
   std::cout << "Force between earth and sun  = " << 
      sun.ForceFrom(&earth) << " Force between Earth and moon " <<
      earth.ForceFrom(&moon) << " Force between moon and sun " << 
-     sun.ForceFrom(&moon) << " difference = " << fabs(moon.ForceFrom(&sun) - 
+     sun.ForceFrom(&sun) << " difference = " << fabs(moon.ForceFrom(&sun) - 
        moon.ForceFrom(&earth)) << std::endl;
   return 0;
 }
