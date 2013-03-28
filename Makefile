@@ -1,14 +1,24 @@
-include config.inc
+MAKE=make
+CXX=gcc-4.7
+CXXFLAGS= -O2 -c -Wall -g  -D_REENTRANT -fPIC -ftree-vectorizer-verbose=4 -Wunsafe-loop-optimizations -std=c++11
 
-EXES=orrery$(EXE)
+LD=gcc-4.7
 
-all: $(EXES)
-	
-planet$(EXE):
-		$(CPP) $(OPTFLAGS) src/planet.cc -o lib/planet.$(OBJ)
+SRCDIR=src
+OBJDIR=obj
+LIBDIR=lib
 
-orrery$(EXE):
-		$(CPP) $(OPTFLAGS) -o orrery -L./lib/ src/orrery.cc 
+LIBTARGET=lib$(MODULE).$(LIB_EXT)
+LDFLAGS= -shared -o
 
-clean:
-	$(RM) orrery
+
+CPP_FILES := $(wildcard src/*.cc)
+OBJ_FILES := $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
+LD_FLAGS := ...
+
+obj/%.o: src/%.cpp
+	 $(CXX) $(CXXFLAGS) -c -o $@ $<
+
+orrery: $(OBJ_FILES)
+	 $(CXX) $(LD_FLAGS) -o $@ $^
+
