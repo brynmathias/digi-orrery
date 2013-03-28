@@ -31,7 +31,9 @@ def makeLib(nameList = None):
     
 def makeMain(mainName):
     if ".cc" in mainName: mainName=mainName[:-3]
-    cmd = [gcc + CXXFLAGS + " -g -v -L./obj/ -I./include/ " + src+mainName+".cc -o ./"+mainName]
+    libs = ""
+    for x in glob.glob(obj+"*"): libs += " %s "%x
+    cmd = [gcc + CXXFLAGS + " -L./obj/ -I./include/ " + src+mainName+".cc "+ libs +" -o ./"+mainName]
     subprocess.call(cmd,shell=True)
     
     

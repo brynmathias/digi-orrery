@@ -1,4 +1,11 @@
 #include "planet.hh"
+
+object::object(double mass, x_y_z_point initialPos, ThreeVec initialConditions):
+  initialConds_(initialConditions),
+  initalPos_(initialPos),
+  mass_(mass)
+  {current_pos_=initialPos;}
+
 x_y_z_point object::GetInitialPosition(){
   return initalPos_;
 }
@@ -18,9 +25,5 @@ double object::ForceFrom(object* o){
 }
 
 
-object::object(double mass, x_y_z_point initialPos, ThreeVec initialConditions):
-  initialConds_(initialConditions),
-  initalPos_(initialPos),
-  mass_(mass)
-  {current_pos_=initialPos;}
+
 

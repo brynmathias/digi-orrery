@@ -15,6 +15,5 @@ public:
 };
 
 
-FourVec a = FourVec(0.,0.,0.,0.);
 
 #endif // FourVec_hh
