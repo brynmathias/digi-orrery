@@ -6,7 +6,7 @@ import subprocess
 import argparse
 
 
-gcc = "g++-4.7"
+gcc = "g++-4.8"
 # gcc = "clang++"
 CXXFLAGS = " -std=c++11 -Wall -ftree-vectorizer-verbose=4 -Wunsafe-loop-optimizations "
 # CXXFLAGS = " -std=c++11 -Wall -g -D_APPLE "
@@ -24,7 +24,7 @@ def makeLib(nameList = None):
     if isinstance(nameList,list):
         for name in nameList:
             if ".cc" in name: name=name[:-3]
-            cmd = [gcc + CXXFLAGS + INCDIR + " -c " + name+".cc -shared -o " +obj+name[6:]+".o" ]
+            cmd = [gcc + CXXFLAGS + INCDIR + " -c " + name+".cc -o " +obj+name[6:]+".o" ]
             print "Building %s"%name
             subprocess.call(cmd,shell=True)
     

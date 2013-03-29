@@ -4,6 +4,8 @@
 #include "functions.hh"
 #include "FourVec.hh"
 #include "ThreeVec.hh"
+#include <string>
+#include <vector>
 static const double G = 1.; // Put in vale for newtons gravitational constant.
 
 
@@ -12,18 +14,22 @@ static const double G = 1.; // Put in vale for newtons gravitational constant.
 class object // celestial object, base class from which objects with sable orbits and non stable orbits will inherit. All objects have some mass and some position + the ability to have some relitive position. 
 {
 public:
-  object (double mass, x_y_z_point initialPos, ThreeVec initialConditions);
+  object (double mass, ThreeVec initialPos, ThreeVec initialConditions, std::string name);
   ~object (){;}
   double DistanceTo(object* o);
   double ForceFrom(object* o);
-  x_y_z_point GetInitialPosition();
-  x_y_z_point current_pos_;
+  ThreeVec GetInitialPosition();
+  std::string GetName();
+  ThreeVec resultantAcceletation(std::vector<object> otherBodies);
+  ThreeVec current_pos_;
   double mass_;
+  ThreeVec current_vel_;
   /* data */
-private:
-  ThreeVec initialConds_;
-  x_y_z_point initalPos_;
+  std::string name_;
 
+private:
+  ThreeVec initalPos_;
+  ThreeVec initialConds_; //vx, vy, vz
 };
 
 
