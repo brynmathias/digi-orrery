@@ -6,12 +6,13 @@ class ThreeVec
 public:
   ThreeVec(double x, double y, double z);
   ThreeVec();
-  ~ThreeVec (){;}
+  // ~ThreeVec (){;}
   void operator+(ThreeVec);
   void operator-(ThreeVec);
   void operator+=(ThreeVec);
+  void operator-=(ThreeVec);
   void operator=(ThreeVec);
-  void operator*(double);
+  void operator*=(double);
   double x;
   double y;
   double z;

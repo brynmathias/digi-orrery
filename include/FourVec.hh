@@ -5,7 +5,7 @@ class FourVec
 {
 public:
   FourVec (double p, double x, double y, double z);
-  ~FourVec(){;}
+  // ~FourVec(){;}
   void operator+(FourVec);
   double p;
   double x;

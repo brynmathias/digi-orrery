@@ -29,13 +29,19 @@ void ThreeVec::operator+= (ThreeVec vec){
   this->z += (vec.z);
 }
 
+void ThreeVec::operator-= (ThreeVec vec){
+  this->x -= (vec.x);
+  this->y -= (vec.y);
+  this->z -= (vec.z);
+}
+
 void ThreeVec::operator= (ThreeVec vec){
   this->x = (vec.x);
   this->y = (vec.y);
   this->z = (vec.z);
 }
 
-void ThreeVec::operator* (double val){
+void ThreeVec::operator*= (double val){
   this->x *= val;
   this->y *= val;
   this->z *= val;
