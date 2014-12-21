@@ -4,7 +4,7 @@
 #include <vector>
 #include "ThreeVec.hh"
 
-object::object(double mass, ThreeVec initialPos, 
+object::object(double mass, ThreeVec initialPos,
                 ThreeVec initialConditions, std::string name):
   mass_(mass),
   name_(name),
@@ -22,14 +22,14 @@ ThreeVec object::GetInitialPosition(){
 double object::DistanceTo(object* o){
   double dx = fabs(this->current_pos_.x - o->current_pos_.x);
   double dy = fabs(this->current_pos_.y - o->current_pos_.y);
-  double dz = fabs(this->current_pos_.z - o->current_pos_.z);  
+  double dz = fabs(this->current_pos_.z - o->current_pos_.z);
   return sqrt(dx*dx + dy*dy + dz*dz);
 }
 
 double object::ForceFrom(object* o){
   double r = object::DistanceTo(o);
   double Mm = this->mass_ * o->mass_; // no approximation of orbits around a central point, this might make things far far far too hard.
-  if(r*r > 0.) return G*Mm/(r*r);
+  if(r*r > 0.) return -G*Mm/(r*r);
   else return 0.;
 }
 
@@ -44,17 +44,17 @@ ThreeVec object::resultantAcceletation(std::vector<object*> otherBodies){
   for( auto &obj : otherBodies){
     F = object::ForceFrom(obj);
     r = object::DistanceTo(obj);
-    dx = this->current_pos_.x - obj->current_pos_.x; 
-    dy = this->current_pos_.y - obj->current_pos_.y; 
-    dz = this->current_pos_.z - obj->current_pos_.z;  
+    dx = this->current_pos_.x - obj->current_pos_.x;
+    dy = this->current_pos_.y - obj->current_pos_.y;
+    dz = this->current_pos_.z - obj->current_pos_.z;
     aTot = F/this->mass_;
     if( r > 0.){
-    ThreeVec thisAccn{dx/r* aTot, dy/r * aTot, dz/r *aTot};
-    accn += thisAccn;
+        ThreeVec thisAccn{dx/r* aTot, dy/r * aTot, dz/r *aTot};
+        accn += thisAccn;
     }
   }
   return accn;
-  
+
 }
 
 std::string object::GetName(){

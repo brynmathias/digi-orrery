@@ -13,6 +13,7 @@ public:
   void operator-=(ThreeVec);
   void operator=(ThreeVec);
   void operator*=(double);
+  void dump();
   double x;
   double y;
   double z;

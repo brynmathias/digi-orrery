@@ -6,10 +6,10 @@ import subprocess
 import argparse
 
 
-gcc = "g++-4.8"
-# gcc = "clang++"
-CXXFLAGS = " -std=c++11 -Wall -ftree-vectorizer-verbose=4 -Wunsafe-loop-optimizations "
-# CXXFLAGS = " -std=c++11 -Wall -g -D_APPLE "
+#gcc = "g++-4.8"
+gcc = "clang++"
+#CXXFLAGS = " -std=c++11 -Wall -ftree-vectorizer-verbose=4 -Wunsafe-loop-optimizations "
+CXXFLAGS = " -std=c++11 -Wall -g -D_APPLE "
 INCDIR = "-I ./include/"
 src = "./src/"
 obj = "./obj/"
@@ -27,26 +27,26 @@ def makeLib(nameList = None):
             cmd = [gcc + CXXFLAGS + INCDIR + " -c " + name+".cc -o " +obj+name[6:]+".o" ]
             print "Building %s"%name
             subprocess.call(cmd,shell=True)
-    
-    
+
+
 def makeMain(mainName):
     if ".cc" in mainName: mainName=mainName[:-3]
     libs = ""
     for x in glob.glob(obj+"*"): libs += " %s "%x
     cmd = [gcc + CXXFLAGS + " -L./obj/ -I./include/ " + src+mainName+".cc "+ libs +" -o ./"+mainName]
     subprocess.call(cmd,shell=True)
-    
-    
-    
+
+
+
 def parser():
     parser = argparse.ArgumentParser(description = "Python build script")
     parser.add_argument("--nThreads", type = int, dest="nThreads",default = 3)
     parser.add_argument("--main",type = str, dest = "name", default="")
     parser.add_argument("--clean",type = bool, dest= "clean",default = False)
     args = parser.parse_args()
-    
+
     return args
-    
+
 
 
 def main():
@@ -67,7 +67,7 @@ def main():
     for t in Threads:
         t.join()
     makeMain(args.name)
-    
+
 
 if __name__ == "__main__":
     main()

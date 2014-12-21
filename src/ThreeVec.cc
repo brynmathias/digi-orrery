@@ -47,6 +47,8 @@ void ThreeVec::operator*= (double val){
   this->z *= val;
 }
 
+void ThreeVec::dump(){
 
+}
 //-----------------------------------------//
 
