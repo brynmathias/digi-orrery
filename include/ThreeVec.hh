@@ -1,6 +1,6 @@
 #ifndef ThreeVec_hh
 #define ThreeVec_hh
-
+#include <iostream>
 class ThreeVec
 {
 public:
@@ -13,7 +13,7 @@ public:
   void operator-=(ThreeVec);
   void operator=(ThreeVec);
   void operator*=(double);
-  void dump();
+  friend std::ostream& operator<<(std::ostream&,const ThreeVec&);
   double x;
   double y;
   double z;

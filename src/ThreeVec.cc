@@ -47,8 +47,10 @@ void ThreeVec::operator*= (double val){
   this->z *= val;
 }
 
-void ThreeVec::dump(){
 
+std::ostream& operator<<(std::ostream& os,const ThreeVec& vec){
+  os << vec.x << ", " << vec.y << ", " <<vec.z;
+  return os;
 }
 //-----------------------------------------//
 

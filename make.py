@@ -9,7 +9,7 @@ import argparse
 #gcc = "g++-4.8"
 gcc = "clang++"
 #CXXFLAGS = " -std=c++11 -Wall -ftree-vectorizer-verbose=4 -Wunsafe-loop-optimizations "
-CXXFLAGS = " -std=c++11 -Wall -g -D_APPLE "
+CXXFLAGS = " -std=c++11 -Wall -g -D_APPLE -v "
 INCDIR = "-I ./include/"
 src = "./src/"
 obj = "./obj/"
@@ -33,7 +33,7 @@ def makeMain(mainName):
     if ".cc" in mainName: mainName=mainName[:-3]
     libs = ""
     for x in glob.glob(obj+"*"): libs += " %s "%x
-    cmd = [gcc + CXXFLAGS + " -L./obj/ -I./include/ " + src+mainName+".cc "+ libs +" -o ./"+mainName]
+    cmd = [gcc + CXXFLAGS + " -L./obj/ -I./include/ " + src+mainName+".cc "+ libs +" -o ./"+mainName +" -v"]
     subprocess.call(cmd,shell=True)
 
 

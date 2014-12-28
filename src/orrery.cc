@@ -44,14 +44,9 @@ int main ()
       /* std::cout << "accn: " << Accn.x << " " << Accn.y << std::endl; */
       /* std::cout << "force on earth from sun is " << earth.ForceFrom(&sun) << std::endl; */
       std::cout << planet1->name_ << ","<< i << ", "
-        << planet1->current_pos_.x << ", "
-        << planet1->current_pos_.y << ", "
-        << planet1->current_pos_.z << ", "
+        << planet1->current_pos_ << ", "
         << sqrt(planet1->current_pos_.x*planet1->current_pos_.x+planet1->current_pos_.y*planet1->current_pos_.y+planet1->current_pos_.z*planet1->current_pos_.z) << ", "
-        << planet1->current_vel_.x << ", "
-        << planet1->current_vel_.x << ", "
-        << planet1->current_vel_.y << ", "
-        << planet1->current_pos_.z <<
+        << planet1->current_vel_ <<
         std::endl;
     }
   }
