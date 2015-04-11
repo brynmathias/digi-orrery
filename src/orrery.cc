@@ -24,9 +24,9 @@ void evolve(std::vector<object*> objV, double t ){
 
 int main ()
 {
-  object sun(10000000000.,ThreeVec{0.,0.,0.},ThreeVec{0.,0.,0.},"sun");
-  object earth(1000000.,ThreeVec{100.,0.,1.},ThreeVec{0.,0.07,0.},"earth");
-  object moon(100.,ThreeVec{100.,0.01,1.},ThreeVec{0.,0.07001,0.},"moon");
+  object sun(1.989E27,ThreeVec{0.,0.,0.},ThreeVec{0.,0.,0.},"sun");
+  object earth(5.972E21,ThreeVec{149600000.,0.,0.},ThreeVec{0.,600.,0.},"earth");
+  object moon(10.,ThreeVec{149597871.,0.,0.},ThreeVec{0.,30.,0.},"moon");
   /* std::cout << "Force between earth and sun  = " << */
   /*    sun.ForceFrom(&earth) << " Force between Earth and moon " << */
   /*    earth.ForceFrom(&moon) << " Force between moon and sun " << */
