@@ -6,7 +6,7 @@
 #include "ThreeVec.hh"
 #include <string>
 #include <vector>
-static const double G = 6.667*pow(10,-11); // Put in vale for newtons gravitational constant.
+static const double G = 6.667*pow(10,-11); // Put in value for newtons gravitational constant.
 
 
 // Currently assuming circular orbits, needs to be updated, although if we work in X,Y,Z then we get around this problem, translating this later on might be a good idea.
